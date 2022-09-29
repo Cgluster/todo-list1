@@ -12,7 +12,8 @@ function App() {
         <button type='submit'>Submit</button>
         <hr />
         <h2>Tasks To Accomplish</h2>
-        <p>Take Shower</p>
+        <input type="checkbox" />
+        <label>Take a Shower</label>
         <p>Exercise - 1 hour</p>
         <p>Code - 4 hours</p>
       </body>
