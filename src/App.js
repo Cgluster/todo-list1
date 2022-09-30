@@ -1,22 +1,49 @@
+import React, { useState } from 'react';
+import { Activity } from './Activity';
+import { AddActivityForm } from './AddActivityForm';
+import { generateId } from './utilities';
 import './App.css';
 
 function App() {
+  const [ activities, setActivities ] = useState([
+    {
+      id: generateId(),
+      text: 'Brush teeth.'
+    },
+    {
+      id: generateId(),
+      text: 'Exercise - 30 minutes.'
+    },
+    {
+      id: generateId(),
+      text: 'Code - 3 hours.'
+    }
+  ]);
+
+  const addActivity = (activity) => {
+    setActivities((prev) => {
+      return [activity, ...prev];
+    });
+  };
+
+  const removeActivity = (activityToRemove) => {
+    setActivities((activities) => activities.filter((task) => task.id !== activityToRemove));
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>To Do List with React</h1>
       </header>
-      <body>
-        <h2>Please Add a Task</h2>
-        <input type="text" />
-        <button type='submit'>Submit</button>
-        <hr />
-        <h2>Tasks To Accomplish</h2>
-        <input type="checkbox" />
-        <label>Take a Shower</label>
-        <p>Exercise - 1 hour</p>
-        <p>Code - 4 hours</p>
-      </body>
+      <main>
+        <AddActivityForm addActivity={addActivity} />
+        <ul className='activities'>
+          {activities.map((activity) => (
+            <Activity key={activity.id} activity={activity}
+            removeActivity={removeActivity} />
+          ))}
+        </ul>
+      </main>
     </div>
   );
 }

@@ -1,3 +1,28 @@
 .App {
   text-align: center;
 }
+
+body {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+input,
+button {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+.AddActivityForm input {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  padding: 0.5rem 2rem;
+}
